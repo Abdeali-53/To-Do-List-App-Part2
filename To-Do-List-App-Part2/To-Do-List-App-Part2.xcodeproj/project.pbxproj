@@ -13,6 +13,10 @@
 		BCED473925784B9C0036C81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCED473725784B9C0036C81A /* Main.storyboard */; };
 		BCED473B25784B9D0036C81A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCED473A25784B9D0036C81A /* Assets.xcassets */; };
 		BCED473E25784B9D0036C81A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCED473C25784B9D0036C81A /* LaunchScreen.storyboard */; };
+		BCED4748257860080036C81A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCED4747257860080036C81A /* libsqlite3.tbd */; };
+		BCED47512578611B0036C81A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED47502578611B0036C81A /* Database.swift */; };
+		BCED4754257876230036C81A /* Task_Details_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED4753257876230036C81A /* Task_Details_ViewController.swift */; };
+		BCED475825788C040036C81A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED475725788C040036C81A /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,11 @@
 		BCED473A25784B9D0036C81A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCED473D25784B9D0036C81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCED473F25784B9D0036C81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCED4747257860080036C81A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		BCED474A257860850036C81A /* To-Do-List-App-Part2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "To-Do-List-App-Part2-Bridging-Header.h"; sourceTree = "<group>"; };
+		BCED47502578611B0036C81A /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		BCED4753257876230036C81A /* Task_Details_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_Details_ViewController.swift; sourceTree = "<group>"; };
+		BCED475725788C040036C81A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCED4748257860080036C81A /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +52,8 @@
 			children = (
 				BCED473025784B9C0036C81A /* To-Do-List-App-Part2 */,
 				BCED472F25784B9C0036C81A /* Products */,
+				BCED4746257860080036C81A /* Frameworks */,
+				BCED474A257860850036C81A /* To-Do-List-App-Part2-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +71,23 @@
 				BCED473125784B9C0036C81A /* AppDelegate.swift */,
 				BCED473325784B9C0036C81A /* SceneDelegate.swift */,
 				BCED473525784B9C0036C81A /* ViewController.swift */,
+				BCED475725788C040036C81A /* TableViewCell.swift */,
 				BCED473725784B9C0036C81A /* Main.storyboard */,
+				BCED4753257876230036C81A /* Task_Details_ViewController.swift */,
+				BCED47502578611B0036C81A /* Database.swift */,
 				BCED473A25784B9D0036C81A /* Assets.xcassets */,
 				BCED473C25784B9D0036C81A /* LaunchScreen.storyboard */,
 				BCED473F25784B9D0036C81A /* Info.plist */,
 			);
 			path = "To-Do-List-App-Part2";
+			sourceTree = "<group>";
+		};
+		BCED4746257860080036C81A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCED4747257860080036C81A /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +121,7 @@
 				TargetAttributes = {
 					BCED472D25784B9C0036C81A = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -139,6 +163,9 @@
 			files = (
 				BCED473625784B9C0036C81A /* ViewController.swift in Sources */,
 				BCED473225784B9C0036C81A /* AppDelegate.swift in Sources */,
+				BCED47512578611B0036C81A /* Database.swift in Sources */,
+				BCED475825788C040036C81A /* TableViewCell.swift in Sources */,
+				BCED4754257876230036C81A /* Task_Details_ViewController.swift in Sources */,
 				BCED473425784B9C0036C81A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "To-Do-List-App-Part2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -294,6 +322,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Abdeali-Mody.To-Do-List-App-Part2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "To-Do-List-App-Part2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,6 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "To-Do-List-App-Part2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +343,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Abdeali-Mody.To-Do-List-App-Part2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "To-Do-List-App-Part2-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
