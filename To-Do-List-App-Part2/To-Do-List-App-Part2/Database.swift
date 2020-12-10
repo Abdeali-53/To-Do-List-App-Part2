@@ -1,9 +1,10 @@
 //
 //  Database.swift
 //  To-Do-List-App-Part2
-//
 //  Created by Abdeali Mody on 2020-12-02.
-//
+//  Student ID - 301085484
+//  Version 1.0
+//  Copyright © 2020 Abdeali. All rights reserved.
 
 import Foundation
 

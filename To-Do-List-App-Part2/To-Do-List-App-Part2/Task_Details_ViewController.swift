@@ -1,9 +1,10 @@
 //
 //  Task_Details_ViewController.swift
 //  To-Do-List-App-Part2
-//
 //  Created by Abdeali Mody on 2020-12-02.
-//
+//  Student ID - 301085484
+//  Version 1.0
+//  Copyright © 2020 Abdeali. All rights reserved.
 
 import UIKit
 
@@ -15,7 +16,6 @@ class Task_Details_ViewController: UIViewController {
     @IBOutlet var due_date: UIDatePicker!
     @IBOutlet var hasCompletedTask: UISwitch!
     
-    //public var tasks:Tasks? = nil
     var database: Database = Database()
     
     var tasksList: Tasks? = nil
@@ -29,9 +29,8 @@ class Task_Details_ViewController: UIViewController {
         task_name = tasksList!.name
 
         
-        //getting the info from the database related to the selected task
+        //getting the information from the database related to the selected task.
         let task : Tasks = database.queryWhereWithName(name: tasksList!.name)
-        //notesDetails.text = todo.notes
         
         if(task.task_is_completed == 1)
         {
@@ -45,33 +44,31 @@ class Task_Details_ViewController: UIViewController {
             dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let dueDate = dateFormatter.date(from: task.duedate)
-            
-            //due_date.date = dueDate!
         }
-        
     }
     
-    @IBAction func due_Switch(_ sender: UISwitch) {
-        
+    //Due Date Switch Function.
+    @IBAction func due_Switch(_ sender: UISwitch)
+    {
         due_date.isUserInteractionEnabled = (!due_date.isUserInteractionEnabled)
     }
     
-    
+    // Due Date picker function.
     @IBAction func duedate(_ sender: UIDatePicker)
     {
         date = due_date.date
     }
-    
-   
-    
+
     @IBOutlet var is_completed: UISwitch!
     var date = Date()
-    
+
+    //Crate or Update Button function.
     @IBAction func create(_ sender: UIButton)
     {
         var dateString  = ""
         var has_due_validation = 0
         
+        //If due date switch is on it provide's Due Date with task name.
         if (due.isOn)
         {
             has_due_validation = 1
@@ -87,7 +84,7 @@ class Task_Details_ViewController: UIViewController {
             is_completed_validation = 1
         }
         
-        let alert = UIAlertController(title: "Create", message: "Are you sure you want to create this task?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Create", message: "Are you sure you want to create or update this task?", preferredStyle: .alert)
         
         //addAction method is used to provide addtional buttons in the alert box for eg: Yes & No
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {action in ()} ))
@@ -95,9 +92,7 @@ class Task_Details_ViewController: UIViewController {
         //I have kept Style attribute to "default" and It will perform the default operations.
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             (self.database.update(name: self.task_name, task_has_due: has_due_validation, duedate: dateString, task_is_completed: is_completed_validation))
-            
-            
-            
+
             let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     
              guard let viewController = mainStoryboard.instantiateViewController(withIdentifier: "todolist") as? ViewController else {
@@ -109,6 +104,7 @@ class Task_Details_ViewController: UIViewController {
         present(alert,animated: true)
     }
     
+    //This function will delete the task.
     @IBAction func deleteTasks(_ sender: UIButton)
     {
         let alert = UIAlertController(title: "Are you sure you want to delete the task?", message: nil, preferredStyle: UIAlertController.Style.alert)
@@ -130,13 +126,15 @@ class Task_Details_ViewController: UIViewController {
 
         present(alert, animated: true, completion: nil)
     }
-    
+   
+    //This function will help user to not make any changes in exsisting task and go back to main screen.
     @IBAction func cancelTasks(_ sender: UIButton)
     {
         //going back to main screen
         let alert = UIAlertController(title: "Are you sure you want to cancel the task?", message: nil, preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
             //going back to main screen
             let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             guard let viewController = mainStoryboard.instantiateViewController(withIdentifier: "todolist") as? ViewController
@@ -146,6 +144,7 @@ class Task_Details_ViewController: UIViewController {
             }
             self.navigationController?.pushViewController(viewController, animated: true)
         }))
+        
         //The user will stay on same screen.
         alert.addAction(UIAlertAction(title: "No", style: .cancel))
 

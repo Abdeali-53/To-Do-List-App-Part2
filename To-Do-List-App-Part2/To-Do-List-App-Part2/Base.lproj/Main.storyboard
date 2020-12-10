@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="height" constant="43" id="dfJ-px-0Q6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <state key="normal" title="add">
+                                <state key="normal" title="+">
                                     <color key="titleColor" red="0.8767997622" green="0.35324227809999997" blue="0.35487186910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

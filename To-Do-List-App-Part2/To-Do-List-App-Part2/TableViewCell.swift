@@ -1,14 +1,16 @@
 //
 //  TableViewCell.swift
 //  To-Do-List-App-Part2
-//
 //  Created by Abdeali Mody on 2020-12-02.
-//
+//  Student ID - 301085484
+//  Version 1.0
+//  Copyright © 2020 Abdeali. All rights reserved.
 
 import UIKit
 
 class TableViewCell: UITableViewCell
 {
+    //Declaring variables for table view cell.
     var task_name_Label: UILabel!
     var due_date_Label: UILabel!
     var markedAsCompleted_Switch: UISwitch!
@@ -16,45 +18,51 @@ class TableViewCell: UITableViewCell
 
     var task_name: String = "" {
         didSet {
-            if (task_name != oldValue) {
+            if (task_name != oldValue)
+            {
                 task_name_Label.text = task_name
             }
         }
     }
     var due_date: String = "" {
         didSet {
-            if (due_date != oldValue) {
+            if (due_date != oldValue)
+            {
                 due_date_Label.text = due_date
             }
         }
     }
     
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
         super.setSelected(selected, animated: animated)
     }
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
+    {
          super.init(style: style, reuseIdentifier: reuseIdentifier )
-
-         let task_name_LabelRect = CGRect(x: 0, y: 3, width: 100, height: 10)
+        
+         // providing lable position, style & alignment.
+         let task_name_LabelRect = CGRect(x: 0, y: 3, width: 150, height: 30)
          let task_name_Marker = UILabel(frame: task_name_LabelRect)
          task_name_Marker.textAlignment = NSTextAlignment.right
          contentView.addSubview(task_name_Marker)
         
-        let task_name_ValueRect = CGRect(x: 0, y: 5, width: 200, height: 15)
+        let task_name_ValueRect = CGRect(x: 0, y: 5, width: 200, height: 20)
         task_name_Label = UILabel(frame: task_name_ValueRect)
         contentView.addSubview(task_name_Label)
 
-         let due_date_LabelRect = CGRect(x: 0, y: 3, width: 100, height: 10)
+         let due_date_LabelRect = CGRect(x: 0, y: 3, width: 250, height: 25)
          let due_date_Marker = UILabel(frame: due_date_LabelRect)
          due_date_Marker.textAlignment = NSTextAlignment.right
          contentView.addSubview(due_date_Marker)
         
-        let due_date_ValueRect = CGRect(x: 0, y: 25, width: 180, height: 10)
+        let due_date_ValueRect = CGRect(x: 0, y: 25, width: 250, height: 20)
         due_date_Label = UILabel(frame: due_date_ValueRect)
         contentView.addSubview(due_date_Label)
         
