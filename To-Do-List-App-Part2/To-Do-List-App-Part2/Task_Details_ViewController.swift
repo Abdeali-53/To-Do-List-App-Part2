@@ -13,8 +13,47 @@ class Task_Details_ViewController: UIViewController {
     @IBOutlet var desc: UITextField!
     @IBOutlet var due: UISwitch!
     @IBOutlet var due_date: UIDatePicker!
+    @IBOutlet var hasCompletedTask: UISwitch!
+    
+    //public var tasks:Tasks? = nil
+    var database: Database = Database()
+    
+    var tasksList: Tasks? = nil
     var task_name:String = ""
+    var descrip: String = ""
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        task_name = tasksList!.name
+
+        
+        //getting the info from the database related to the selected task
+        let task : Tasks = database.queryWhereWithName(name: tasksList!.name)
+        //notesDetails.text = todo.notes
+        
+        if(task.task_is_completed == 1)
+        {
+            hasCompletedTask.isOn = true
+        }
+        if (task.task_has_due == 1)
+        {
+            due.isOn = true
+ 
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dueDate = dateFormatter.date(from: task.duedate)
+            
+            //due_date.date = dueDate!
+        }
+        
+    }
+    
     @IBAction func due_Switch(_ sender: UISwitch) {
+        
+        due_date.isUserInteractionEnabled = (!due_date.isUserInteractionEnabled)
     }
     
     
@@ -23,8 +62,7 @@ class Task_Details_ViewController: UIViewController {
         date = due_date.date
     }
     
-    var database: Database = Database()
-    var tasksList: Tasks? = nil
+   
     
     @IBOutlet var is_completed: UISwitch!
     var date = Date()
@@ -56,7 +94,7 @@ class Task_Details_ViewController: UIViewController {
         
         //I have kept Style attribute to "default" and It will perform the default operations.
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            (self.database.update(name: self.task_name , description: self.desc.text!, task_has_due: has_due_validation, duedate: dateString, task_is_completed: is_completed_validation))
+            (self.database.update(name: self.task_name, task_has_due: has_due_validation, duedate: dateString, task_is_completed: is_completed_validation))
             
             
             
@@ -71,12 +109,47 @@ class Task_Details_ViewController: UIViewController {
         present(alert,animated: true)
     }
     
-    
-    override func viewDidLoad()
+    @IBAction func deleteTasks(_ sender: UIButton)
     {
-        super.viewDidLoad()
+        let alert = UIAlertController(title: "Are you sure you want to delete the task?", message: nil, preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            //This will delete the information from the database and go back to home screen.
+            self.database.delete(name: self.task_name)
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+             guard let viewController = mainStoryboard.instantiateViewController(withIdentifier: "todolist") as? ViewController else {
+                return
+             }
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }))
         
-        //task_name = tasksList!.name
-        
+        //The user will remain on the same screen
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+
+        present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func cancelTasks(_ sender: UIButton)
+    {
+        //going back to main screen
+        let alert = UIAlertController(title: "Are you sure you want to cancel the task?", message: nil, preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            //going back to main screen
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let viewController = mainStoryboard.instantiateViewController(withIdentifier: "todolist") as? ViewController
+            else
+            {
+              return
+            }
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }))
+        //The user will stay on same screen.
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+
+        present(alert, animated: true, completion: nil)
+    }
+    
 }

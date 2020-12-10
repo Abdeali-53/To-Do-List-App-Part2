@@ -45,7 +45,7 @@ class TableViewCell: UITableViewCell
          task_name_Marker.textAlignment = NSTextAlignment.right
          contentView.addSubview(task_name_Marker)
         
-        let task_name_ValueRect = CGRect(x: 20, y: 5, width: 200, height: 15)
+        let task_name_ValueRect = CGRect(x: 0, y: 5, width: 200, height: 15)
         task_name_Label = UILabel(frame: task_name_ValueRect)
         contentView.addSubview(task_name_Label)
 

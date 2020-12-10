@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="height" constant="43" id="dfJ-px-0Q6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <state key="normal" title="+">
+                                <state key="normal" title="add">
                                     <color key="titleColor" red="0.8767997622" green="0.35324227809999997" blue="0.35487186910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -179,16 +179,16 @@
                                         <color key="textColor" red="0.90239280460000004" green="0.088120765980000001" blue="0.064251184459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNO-Sy-VID">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oNO-Sy-VID">
                                         <rect key="frame" x="319" y="8" width="49" height="31"/>
                                         <connections>
                                             <action selector="due_Switch:" destination="1ga-ei-fAS" eventType="valueChanged" id="IBo-s3-D1e"/>
                                         </connections>
                                     </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V8m-tC-zGe">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V8m-tC-zGe">
                                         <rect key="frame" x="319" y="298" width="49" height="31"/>
                                     </switch>
-                                    <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-bj-wKo">
+                                    <datePicker userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-bj-wKo">
                                         <rect key="frame" x="0.0" y="61" width="374" height="229"/>
                                         <connections>
                                             <action selector="duedate:" destination="1ga-ei-fAS" eventType="valueChanged" id="WKr-ej-RXE"/>
@@ -201,6 +201,9 @@
                                         <state key="normal" title="Delete">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteTasks:" destination="1ga-ei-fAS" eventType="touchUpInside" id="v0z-5K-QdY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gON-1F-ZSl">
                                         <rect key="frame" x="294" y="373" width="80" height="40"/>
@@ -209,6 +212,9 @@
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelTasks:" destination="1ga-ei-fAS" eventType="touchUpInside" id="8Cu-Ee-hqL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbr-Yx-6Ra">
                                         <rect key="frame" x="8" y="373" width="80" height="40"/>
@@ -277,6 +283,7 @@
                         <outlet property="desc" destination="b9P-Ii-GpY" id="E4c-GC-bjs"/>
                         <outlet property="due" destination="oNO-Sy-VID" id="Pa2-2D-ZXe"/>
                         <outlet property="due_date" destination="AbU-bj-wKo" id="26x-lC-e58"/>
+                        <outlet property="hasCompletedTask" destination="V8m-tC-zGe" id="Aqe-Qu-Smn"/>
                         <outlet property="is_completed" destination="V8m-tC-zGe" id="Bti-iY-OX8"/>
                     </connections>
                 </viewController>
